@@ -1,0 +1,55 @@
+<!DOCTYPE html><!DOCTYPE html>
+<html>
+<head>
+  <title>Button Example</title>
+  <style>
+    /* Centering the button */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Define a button element -->
+<button id="myButton">Click Me!</button>
+
+<script>
+  // Add functionality to the button using JavaScript
+  // Here, we're adding an event listener to the button
+  // When the button is clicked, it will execute the function handleClick
+  document.getElementById("myButton").addEventListener("click", handleClick);
+
+  // Define the function that will be executed when the button is clicked
+  function handleClick() {
+    // Open a new window in fullscreen mode
+    var newWindow = window.open("", "myWindow", "fullscreen=yes");
+
+    // Define a countdown timer
+    var count = 5;
+    var timer = setInterval(function() {
+      if (count > 0) {
+        var countdownHtml = "<div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: blue; width: 100px; height: 100px; border-radius: 50%; display: flex; justify-content: center; align-items: center;'>";
+        countdownHtml += "<h1 style='font-size: 40px; text-align: center; color: white;'>" + count + "</h1>";
+        countdownHtml += "</div>";
+        newWindow.document.body.innerHTML = countdownHtml;
+        count--;
+      } else {
+        var hackedHtml = "<div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: red;'>";
+        hackedHtml += "<h1 style='font-size: 100px; text-align: center; color: white;'>YOUR PC HAS HACKED</h1>";
+        hackedHtml += "</div>";
+        newWindow.document.body.innerHTML = hackedHtml;
+        clearInterval(timer); // Stop the timer when countdown is done
+      }
+    }, 1000); // Update every second (1000 milliseconds)
+
+    // You can add any other actions you want to perform here
+  }
+</script>
+
+</body>
+</html>

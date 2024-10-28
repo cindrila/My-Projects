@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function reset() {
+            //input elements
+            var name= document.getElementById('nme');
+            var eml= document.getElementById('emal');
+            var mno= document.getElementById('mbno');
+            name.value=eml.value = mno.value='';
+            //span elements
+            var nm= document.getElementById('nm');
+            var em= document.getElementById('emal');
+            var phn= document.getElementById('phn');
+            var phno= document.getElementById('phno');
+            nm.style.color="black"
+            em.style.color="black"
+            phn.style.color="black"
+            phno.style.color="black"
+            name.focus();
+        var summary = document.getElementById("summary");
+        summary.innerHTML='';
+            
+        }
+        function Submit()
+{
+    
+    var name = document.getElementById('nme');
+    var eml = document.getElementById('emal');
+    var mno = document.getElementById('mbno');
+    //span tags
+            var nm= document.getElementById('nm');
+            var em= document.getElementById('emal');
+            var phn= document.getElementById('phn');
+            var phno= document.getElementById('phno');
+            var summary=document.getElementById("summary");
+
+    if(name.value==0){
+      nm.style.color="red"  
+      summary.innerHTML= "*Name is required <br/> ";
+    }
+    if(eml.value==0){
+      nm.style.color="red"  
+      summary.innerHTML=summary.innerHTML+ "*Email is required <br/> ";
+    }
+    if(mno.value==0){
+    nm.style.color="red"  
+    summary.innerHTML=summary.innerHTML+ "*Mobile number is required <br/> ";
+  }
+  else{
+    var mno=mno.value
+    var reg=new RegExp('^[6-9]{1}[0-9]{9}$');
+    if(!reg.test(mno)){
+        phno.style.color.display='';
+        phno.style.color="red";
+        summary.innerHTML=summary.innerHTML+"*Mobile Number is Invalid <br>";
+
+    }
+  }
+
+}    
+   </script>
+</head>
+<body>
+    <div> 
+        <form action="">
+            <h1> Login Page</h1>
+            <label for="name">
+                Name:
+                <input id="name" type="name" placeholder="Enter your name">
+            </label><span id="nm"> *</span><br>
+            <label for="email">
+                Email:
+                <input id="eml" type="email" placeholder="Enter your mail">
+            </label><span id="em">*</span><br>
+            <label for="Mobile number">
+                Mobile no:
+                <input id="mno" type="mobile number" placeholder="Enter your Mobile number">
+            </label> <span id="phn">*</span><span id="phno">*</span>
+            <br>
+
+        <button  onclick="reset()">Reset</button>
+        <button onclick="submit()">Submit</button>
+
+        <label id="Summary" style="color:red">
+        
+        
+
+        </label>
+        <span id="phn"></span>
+    </form>
+
+    </div>
+</body>
+</html>
